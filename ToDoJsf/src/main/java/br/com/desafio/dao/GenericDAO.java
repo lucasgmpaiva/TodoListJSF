@@ -11,6 +11,8 @@ import br.com.desafio.util.HibernateUtil;
 
 public abstract class GenericDAO<Entity> {
 	
+	//Para a função de listagem ficar genérica foi necessário criar este atributo e este construtor
+	
 	private Class<Entity> classe;
 	
 	@SuppressWarnings("unchecked")
