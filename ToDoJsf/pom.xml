@@ -30,6 +30,14 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<repositories>
+        <repository>
+            <id>prime-repo</id>
+            <name>Prime Repo</name>
+            <url>http://repository.primefaces.org/</url>
+        </repository>
+    </repositories>
 
 	<dependencies>
 		<!-- Hibernate -->
@@ -38,36 +46,42 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.4.22.Final</version>
 		</dependency>
-		
+
 		<!-- Conector Mysql -->
 		<dependency>
-		    <groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
-		    <version>8.0.22</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.22</version>
 		</dependency>
-		
+
 		<!-- JUnit -->
 		<dependency>
-		    <groupId>junit</groupId>
-		    <artifactId>junit</artifactId>
-		    <version>4.13.1</version>
-		    <scope>test</scope>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.1</version>
+			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- JSF -->
 		<dependency>
-		    <groupId>org.glassfish</groupId>
-		    <artifactId>javax.faces</artifactId>
-		    <version>2.4.0</version>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+
+		<!-- CDI -->
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>1.2</version>
 		</dependency>
 		
 		<!-- PrimeFaces -->
 		<dependency>
 		    <groupId>org.primefaces</groupId>
 		    <artifactId>primefaces</artifactId>
-		  	<version>8.0</version>
+		    <version>8.0</version>
 		</dependency>
-		
 		
 	</dependencies>
 
