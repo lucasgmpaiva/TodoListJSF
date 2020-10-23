@@ -3,13 +3,14 @@ package br.com.desafio.control;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 
 import br.com.desafio.dao.TaskDAO;
 import br.com.desafio.model.Task;
 
-@Named
+@ManagedBean(name = "myBean")
 @ViewScoped
 public class TaskBean implements Serializable{
 	
@@ -17,6 +18,13 @@ public class TaskBean implements Serializable{
 	private Task task;
 	private List<Task> tasks;
 	
+	@PostConstruct
+	public void startar() {
+		System.out.println("Inicializei a task");
+		this.task = new Task();
+		this.tasks = taskDAO.list();
+		System.out.println(tasks.get(0).getName());
+	}
 	
 	public Task getTask() {
 		return task;
@@ -39,8 +47,9 @@ public class TaskBean implements Serializable{
 	}
 
 	public void save() {
-		//taskDAO.save(task);
-		System.out.println("oi");
+		taskDAO.save(task);
+		tasks.add(task);
+		startar();
 	}
 	
 	public void delete() {
@@ -51,8 +60,4 @@ public class TaskBean implements Serializable{
 		taskDAO.update(task);
 	}
 	
-	public void list() {
-		this.tasks = taskDAO.list();
-	}
-
 }

@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html>
-<html xlmns="http://www.w3.org/1999/xhtml"
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
@@ -9,27 +9,22 @@
 	<title>Testando JSF</title>
 </h:head>
 <h:body>
-	<h:form>
-		<!-- 		<h3>Cadastrar Tarefa</h3>
-		<span class="ui-float-label"> <p:inputText id="input-name"
-				value="#{task.name}" /> <p:outputLabel for="@previous" value="Nome" />
-		</span>
-		<p:separator />
-		<span class="ui-float-label"> <p:inputText
-				id="input-description" value="#{task.description}" /> <p:outputLabel
-				for="@previous" value="Descrição" />
-		</span>
-		<p:commandButton value="Cadastrar" id="button_cadastrar" action="#{taskBean.save}" style="margin-right:20px;" ajax="false" />
- -->
+	<p:growl id="message" />
+	<h:form id="myForm">
 		<p:panel header="Lista de Tarefas">
-			<p:dataTable emptyMessage="Sem tarefas por enquanto!">
+			<p:dataTable emptyMessage="Sem tarefas por enquanto!"
+				value="#{myBean.tasks}" var="task" id="dataTable">
 				<f:facet name="header">
 					<p:commandButton value="Novo"
 						oncomplete="PF('dialogNewTask').show();" />
 				</f:facet>
-				<p:column headerText="Nome">
+				<p:column headerText="Nome" value="#{task.name}">
+					<h:outputText value="#{task.name}" />
 				</p:column>
-				<p:column headerText="Descrição">
+				<p:column headerText="Descrição" value="#{task.description}">
+					<h:outputText value="#{task.description}" />
+				</p:column>
+				<p:column headerText="Opções">
 				</p:column>
 			</p:dataTable>
 		</p:panel>
@@ -37,16 +32,20 @@
 
 	<p:dialog header="Cadastrar Tarefa" widgetVar="dialogNewTask"
 		resizable="false" modal="true">
-		<h:form>
-			<h:panelGrid columns="2">
+		<h:form id="formTask">
+			<h:panelGrid columns="2" id="panelGrid">
 				<p:outputLabel value="Nome:" />
-				<p:inputText size="30" maxlength="50" />
+				<p:inputText size="30" maxlength="50" value="#{myBean.task.name}" />
 				<p:outputLabel value="Descrição:" />
-				<p:inputText size="50" maxlength="140" />
+				<p:inputText size="50" maxlength="140"
+					value="#{myBean.task.description}" />
 			</h:panelGrid>
 			<h:panelGrid columns="2">
-				<p:commandButton value="Cadastrar" actionListener="#{myBean.test}" />
-				<p:commandButton value="Cancelar" oncomplete="PF('dialogNewTask').hide();"/>
+				<p:commandButton value="Cadastrar" actionListener="#{myBean.save}"
+					update=":message :formTask:panelGrid :myForm:dataTable"
+					oncomplete="PF('dialogNewTask').hide();" />
+				<p:commandButton value="Cancelar"
+					oncomplete="PF('dialogNewTask').hide();" />
 			</h:panelGrid>
 
 		</h:form>
