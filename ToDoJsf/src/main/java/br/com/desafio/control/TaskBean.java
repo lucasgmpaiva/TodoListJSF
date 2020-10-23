@@ -80,6 +80,7 @@ public class TaskBean implements Serializable{
 		task = (Task) event.getComponent().getAttributes().get("taskSelected");
 		try {
 			taskDAO.delete(task);
+			Messages.addGlobalInfo("Tarefa deletada com sucesso!");
 			startar();
 		} catch(RuntimeException e) {
 			Messages.addGlobalError("Erro ao deletar tarefa!");
