@@ -47,9 +47,14 @@ public class TaskBean implements Serializable{
 	}
 
 	public void save() {
-		taskDAO.save(task);
-		tasks.add(task);
-		startar();
+		try { 
+			taskDAO.save(task);
+			tasks.add(task);
+			startar();
+		} catch(Exception e) {
+			System.err.println("Erro ao cadastrar tarefa");
+		}
+		
 	}
 	
 	public void delete() {
