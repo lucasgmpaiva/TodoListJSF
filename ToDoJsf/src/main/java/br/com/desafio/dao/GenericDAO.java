@@ -33,7 +33,8 @@ public abstract class GenericDAO<Entity> {
 			if (transaction != null) {
 				transaction.rollback();
 			}
-			throw e;
+			e.printStackTrace();
+			throw new RuntimeException("Erro ao cadastrar!");
 		} finally {
 			session.close();
 		}
@@ -51,6 +52,7 @@ public abstract class GenericDAO<Entity> {
 			if (transaction != null) {
 				transaction.rollback();
 			}
+			e.printStackTrace();
 			throw e;
 		} finally {
 			session.close();
@@ -69,7 +71,8 @@ public abstract class GenericDAO<Entity> {
 			if (transaction != null) {
 				transaction.rollback();
 			}
-			throw e;
+			e.printStackTrace();
+			throw new RuntimeException("Erro ao atualizar!");
 		} finally {
 			session.close();
 		}
