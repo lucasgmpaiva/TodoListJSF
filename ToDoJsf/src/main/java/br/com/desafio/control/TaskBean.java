@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
 
+import org.omnifaces.util.Messages;
+
 import br.com.desafio.dao.TaskDAO;
 import br.com.desafio.model.Task;
 
@@ -21,7 +23,12 @@ public class TaskBean implements Serializable{
 	@PostConstruct
 	public void startar() {
 		this.task = new Task();
-		this.tasks = taskDAO.list();
+		try {
+			this.tasks = taskDAO.list();
+		} catch(RuntimeException e) {
+			System.err.println("Erro ao listar tarefas");
+			e.printStackTrace();
+		}
 	}
 	
 	public Task getTask() {
@@ -39,18 +46,16 @@ public class TaskBean implements Serializable{
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
-	
-	public void test() {
-		System.out.println("Cheguei aqui");
-	}
 
 	public void save() {
 		try { 
 			taskDAO.save(task);
 			tasks.add(task);
+			Messages.addGlobalInfo("Tarefa cadastrada com sucesso!");
 			startar();
-		} catch(Exception e) {
+		} catch(RuntimeException e) {
 			System.err.println("Erro ao cadastrar tarefa");
+			e.printStackTrace();
 		}
 		
 	}
