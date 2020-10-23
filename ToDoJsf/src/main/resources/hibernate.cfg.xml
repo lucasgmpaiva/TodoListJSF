@@ -13,7 +13,7 @@
 		<property name="current_session_context_class">thread</property>
 		<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
 		<property name="hibernate.show_sql">true</property>
-		<property name="hbm2ddl.auto">validate</property>
+		<property name="hbm2ddl.auto">create</property>
 		
 		<mapping class="br.com.desafio.model.Task"/>
 	</session-factory>
