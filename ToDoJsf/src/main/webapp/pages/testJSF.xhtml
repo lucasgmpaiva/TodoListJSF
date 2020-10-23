@@ -13,20 +13,38 @@
 	<h:form id="myForm">
 		<p:panel header="Lista de Tarefas">
 			<p:dataTable emptyMessage="Sem tarefas por enquanto!"
-				value="#{myBean.tasks}" var="task" id="dataTable">
+				paginator="true" rows="10" value="#{myBean.tasks}" var="task"
+				id="dataTable">
 				<f:facet name="header">
 					<p:commandButton value="Novo"
 						oncomplete="PF('dialogNewTask').show();" />
 				</f:facet>
-				<p:column headerText="Nome" value="#{task.name}">
+				<p:column headerText="Nome" sortBy="#{task.name}"
+					filterBy="#{task.name}">
 					<h:outputText value="#{task.name}" />
 				</p:column>
-				<p:column headerText="Descrição" value="#{task.description}">
+				<p:column headerText="Descrição">
 					<h:outputText value="#{task.description}" />
 				</p:column>
 				<p:column headerText="Opções">
+					<p:commandButton icon="ui-icon-trash"
+						actionListener="#{myBean.delete}"
+						update=":message :myForm:dataTable">
+						<p:confirm header="Tem certeza?"
+							message="Tem certeza que quer excluir esta tarefa?"
+							icon="ui-icon-alert" />
+							<f:attribute name="taskSelected" value="#{task}"/>
+					</p:commandButton>
 				</p:column>
 			</p:dataTable>
+
+			<p:confirmDialog global="true">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+
 		</p:panel>
 	</h:form>
 
