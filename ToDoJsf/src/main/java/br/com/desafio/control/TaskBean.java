@@ -9,13 +9,14 @@ import javax.inject.Named;
 import br.com.desafio.dao.TaskDAO;
 import br.com.desafio.model.Task;
 
-@Named("taskBean")
+@Named
 @ViewScoped
 public class TaskBean implements Serializable{
 	
 	private TaskDAO taskDAO = new TaskDAO();
 	private Task task;
 	private List<Task> tasks;
+	
 	
 	public Task getTask() {
 		return task;
