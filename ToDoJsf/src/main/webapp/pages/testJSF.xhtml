@@ -35,6 +35,12 @@
 							icon="ui-icon-alert" />
 							<f:attribute name="taskSelected" value="#{task}"/>
 					</p:commandButton>
+					<p:commandButton icon="ui-icon-pencil"
+						actionListener="#{myBean.update()}"
+						oncomplete="PF('dialogNewTask').show();"
+						update=":myForm:dataTable :formTask:panelGrid">
+						<f:attribute name="taskSelected" value="#{task}"/>
+					</p:commandButton>
 				</p:column>
 			</p:dataTable>
 
