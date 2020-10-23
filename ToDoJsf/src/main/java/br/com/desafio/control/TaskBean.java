@@ -20,10 +20,8 @@ public class TaskBean implements Serializable{
 	
 	@PostConstruct
 	public void startar() {
-		System.out.println("Inicializei a task");
 		this.task = new Task();
 		this.tasks = taskDAO.list();
-		System.out.println(tasks.get(0).getName());
 	}
 	
 	public Task getTask() {
