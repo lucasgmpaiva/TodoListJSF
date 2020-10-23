@@ -2,9 +2,11 @@ package br.com.desafio.control;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
 
 import org.omnifaces.util.Messages;
@@ -48,24 +50,45 @@ public class TaskBean implements Serializable{
 	}
 
 	public void save() {
-		try { 
-			taskDAO.save(task);
-			tasks.add(task);
-			Messages.addGlobalInfo("Tarefa cadastrada com sucesso!");
+		try {
+			if(Objects.isNull(task.getId())) {
+				int verificador = 0;
+				for(Task task : tasks) {
+					if(task.getName().toLowerCase().equals(this.task.getName().toLowerCase())) {
+						verificador++;
+					}
+				}
+				if(verificador == 0) {
+					taskDAO.save(task);
+					Messages.addGlobalInfo("Tarefa cadastrada com sucesso!");
+				} else {
+					Messages.addGlobalInfo("Tarefa já existente!");
+				}
+			} else {
+				taskDAO.update(task);
+				Messages.addGlobalInfo("Tarefa atualizada com sucesso!");
+			}
 			startar();
 		} catch(RuntimeException e) {
-			Messages.addGlobalError("Erro ao cadastrar tarefa!");
+			Messages.addGlobalError(e.getMessage());
 			e.printStackTrace();
 		}
 		
 	}
 	
-	public void delete() {
-		taskDAO.delete(task);
+	public void delete(ActionEvent event) {
+		task = (Task) event.getComponent().getAttributes().get("taskSelected");
+		try {
+			taskDAO.delete(task);
+			startar();
+		} catch(RuntimeException e) {
+			Messages.addGlobalError("Erro ao deletar tarefa!");
+			e.printStackTrace();
+		}
 	}
 	
-	public void update() {
-		taskDAO.update(task);
+	public void update(ActionEvent event) {
+		task = (Task) event.getComponent().getAttributes().get("taskSelected");
 	}
 	
 }

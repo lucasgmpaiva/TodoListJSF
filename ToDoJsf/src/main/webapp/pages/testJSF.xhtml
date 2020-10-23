@@ -36,9 +36,9 @@
 							<f:attribute name="taskSelected" value="#{task}"/>
 					</p:commandButton>
 					<p:commandButton icon="ui-icon-pencil"
-						actionListener="#{myBean.update()}"
-						oncomplete="PF('dialogNewTask').show();"
-						update=":myForm:dataTable :formTask:panelGrid">
+						actionListener="#{myBean.update}"
+						update=":myForm:dataTable :formTask:panelGrid"
+						oncomplete="PF('dialogNewTask').show();">
 						<f:attribute name="taskSelected" value="#{task}"/>
 					</p:commandButton>
 				</p:column>
@@ -63,6 +63,7 @@
 				<p:outputLabel value="Descrição:" />
 				<p:inputText size="50" maxlength="140"
 					value="#{myBean.task.description}" />
+				<h:inputHidden value="#{myBean.task.id}" />
 			</h:panelGrid>
 			<h:panelGrid columns="2">
 				<p:commandButton value="Salvar" actionListener="#{myBean.save}"
