@@ -26,7 +26,7 @@ public class TaskBean implements Serializable{
 		try {
 			this.tasks = taskDAO.list();
 		} catch(RuntimeException e) {
-			System.err.println("Erro ao listar tarefas");
+			Messages.addGlobalError("Erro ao listar tarefas!");
 			e.printStackTrace();
 		}
 	}
@@ -54,7 +54,7 @@ public class TaskBean implements Serializable{
 			Messages.addGlobalInfo("Tarefa cadastrada com sucesso!");
 			startar();
 		} catch(RuntimeException e) {
-			System.err.println("Erro ao cadastrar tarefa");
+			Messages.addGlobalError("Erro ao cadastrar tarefa!");
 			e.printStackTrace();
 		}
 		
