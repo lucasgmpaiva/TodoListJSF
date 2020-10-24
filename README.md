@@ -33,7 +33,7 @@ As mudanças no arquivo de configuração devem ser as seguintes:
 #### Execução:
 1. Baixe o projeto como .zip
 2. Descompacte o arquivo
-3. Na IDE Eclipse, siga o seguinte caminho: File -> Import... -> Existing Maven Projects -> Busque a pasta na qual você descompactou o arquivo -> Selecione o projeto e presisone "Finish".
+3. Na IDE Eclipse, siga o seguinte caminho: File -> Import... -> Existing Maven Projects -> Busque a pasta na qual você descompactou o arquivo -> Selecione o projeto e pressione "Finish".
 4. Adicione o Projeto a seu server Apache TomCat
 5. Inicialize o servidor
 6. Em um navegador, acesse o endereço: "localhost:8080/ToDoJSF/pages/testJSF.xhtml". Se necessário, substitua a porta "8080" pela porta com a qual o seu TomCat foi configurado.
