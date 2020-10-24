@@ -51,22 +51,21 @@ public class TaskBean implements Serializable{
 
 	public void save() {
 		try {
+			int occurrences = countName(task.getName());
 			if(Objects.isNull(task.getId())) {
-				int verificador = 0;
-				for(Task task : tasks) {
-					if(task.getName().toLowerCase().equals(this.task.getName().toLowerCase())) {
-						verificador++;
-					}
-				}
-				if(verificador == 0) {
+				if(occurrences == 0) {
 					taskDAO.save(task);
 					Messages.addGlobalInfo("Tarefa cadastrada com sucesso!");
 				} else {
-					Messages.addGlobalInfo("Tarefa já existente!");
+					Messages.addGlobalError("Tarefa já existente!");
 				}
 			} else {
-				taskDAO.update(task);
-				Messages.addGlobalInfo("Tarefa atualizada com sucesso!");
+					if(occurrences <= 1) {
+						taskDAO.update(task);
+						Messages.addGlobalInfo("Tarefa atualizada com sucesso!");
+					} else {
+						Messages.addGlobalError("Tarefa já existente!");
+					}
 			}
 			startar();
 		} catch(RuntimeException e) {
@@ -74,6 +73,16 @@ public class TaskBean implements Serializable{
 			e.printStackTrace();
 		}
 		
+	}
+	
+	private int countName(String name) {
+		int count = 0;
+		for(Task taskIterator : tasks) {
+			if(taskIterator.getName().equals(name)) {
+				count++;
+			}
+		}
+		return count;
 	}
 	
 	public void delete(ActionEvent event) {
