@@ -23,6 +23,13 @@ Para a execução deste projeto é necessário, primeiro possuir os seguintes re
 - MySQL
 - Apache TomCat 8.5
 
+#### Observação Importante
+É necessário também que o banco de dados seja configurado na pasta: "src/main/resources/hibernate.cfg.xml". 
+Neste caso é preciso criar o banco de dados no MySQL Server, mas apenas o banco, pois a aplicação está configurada para realizar a criação automática da tabela a cada inicialização do servidor. Você pode fazer as alterações descritas a seguir após o passo 4 das instruções de execução.
+As mudanças no arquivo de configuração devem ser as seguintes:
+1. Alterar a propriedade "hibernate.connection.url", para a url do banco que foi criado em seu MySQL Server.
+2. Alterar as propriedades: "hibernate.connection.username" e "hibernate.connection.password" para o usuário e senha de seu servidor MySQL.
+
 #### Execução:
 1. Baixe o projeto como .zip
 2. Descompacte o arquivo
@@ -31,9 +38,3 @@ Para a execução deste projeto é necessário, primeiro possuir os seguintes re
 5. Inicialize o servidor
 6. Em um navegador, acesse o endereço: "localhost:8080/ToDoJSF/pages/testJSF.xhtml". Se necessário, substitua a porta "8080" pela porta com a qual o seu TomCat foi configurado.
 7. O projeto já estará em execução.
-
-É necessário também que o banco de dados seja configurado na pasta: "src/main/resources/hibernate.cfg.xml". 
-Neste caso é preciso criar o banco de dados no MySQL Server, mas apenas o banco, pois a aplicação está configurada para realizar a criação automática da tabela a cada inicialização do servidor.
-As mudanças no arquivo de configuração devem ser as seguintes:
-1. Alterar a propriedade "hibernate.connection.url", para a url do banco que foi criado em seu MySQL Server.
-2. Alterar as propriedades: "hibernate.connection.username" e "hibernate.connection.password" para o usuário e senha de seu servidor MySQL.
