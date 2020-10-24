@@ -51,23 +51,27 @@ public class TaskBean implements Serializable{
 
 	public void save() {
 		try {
-			int occurrences = countName(task.getName());
-			if(Objects.isNull(task.getId())) {
-				if(occurrences == 0) {
-					taskDAO.save(task);
-					Messages.addGlobalInfo("Tarefa cadastrada com sucesso!");
-				} else {
-					Messages.addGlobalError("Tarefa já existente!");
-				}
-			} else {
-					if(occurrences <= 1) {
-						taskDAO.update(task);
-						Messages.addGlobalInfo("Tarefa atualizada com sucesso!");
+			if(!task.getName().equals("")) {
+				int occurrences = countName(task.getName());
+				if(Objects.isNull(task.getId())) {
+					if(occurrences == 0) {
+						taskDAO.save(task);
+						Messages.addGlobalInfo("Tarefa cadastrada com sucesso!");
 					} else {
 						Messages.addGlobalError("Tarefa já existente!");
 					}
+				} else {
+						if(occurrences <= 1) {
+							taskDAO.update(task);
+							Messages.addGlobalInfo("Tarefa atualizada com sucesso!");
+						} else {
+							Messages.addGlobalError("Tarefa já existente!");
+						}
+				}
+				startar();
+			} else {
+				Messages.addGlobalError("Campo nome é obrigatório!");
 			}
-			startar();
 		} catch(RuntimeException e) {
 			Messages.addGlobalError(e.getMessage());
 			e.printStackTrace();
