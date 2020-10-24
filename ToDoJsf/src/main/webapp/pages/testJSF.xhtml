@@ -19,8 +19,7 @@
 					<p:commandButton value="Novo"
 						oncomplete="PF('dialogNewTask').show();" />
 				</f:facet>
-				<p:column headerText="Nome" sortBy="#{task.name}"
-					filterBy="#{task.name}">
+				<p:column headerText="Nome">
 					<h:outputText value="#{task.name}" />
 				</p:column>
 				<p:column headerText="Descrição">
