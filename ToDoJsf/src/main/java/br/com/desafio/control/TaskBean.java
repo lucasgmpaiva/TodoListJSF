@@ -61,9 +61,17 @@ public class TaskBean implements Serializable{
 						Messages.addGlobalError("Tarefa já existente!");
 					}
 				} else {
-						if(occurrences <= 1) {
-							taskDAO.update(task);
-							Messages.addGlobalInfo("Tarefa atualizada com sucesso!");
+						if(occurrences <= 1 ) {
+							Long newId = idExistent(task.getName());
+							if(occurrences == 1 && task.getId() == newId) {
+								taskDAO.update(task);
+								Messages.addGlobalInfo("Tarefa atualizada com sucesso!");
+							} else if(occurrences == 0){
+								taskDAO.update(task);
+								Messages.addGlobalInfo("Tarefa atualizada com sucesso!");
+							} else {
+								Messages.addGlobalError("Tarefa já existente!");
+							}
 						} else {
 							Messages.addGlobalError("Tarefa já existente!");
 						}
@@ -87,6 +95,16 @@ public class TaskBean implements Serializable{
 			}
 		}
 		return count;
+	}
+	
+	private Long idExistent(String name) {
+		Long id = 0L;
+		for(Task taskIterator : tasks) {
+			if(taskIterator.getName().equals(name)) {
+				id  = taskIterator.getId();
+			}
+		}
+		return id;
 	}
 	
 	public void delete(ActionEvent event) {
