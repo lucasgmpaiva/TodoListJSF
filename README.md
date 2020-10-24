@@ -4,6 +4,8 @@
 
 Este projeto trata-se da implementação de uma TodoList (Lista de Afazeres) por meio de Java Web para a realização do desafio de recrutamento de estagiários da empresa ESIG -  Software e Consultoria em TI.
 
+#### Autor: Lucas Gabriel Matias Paiva
+
 ### Tecnologias Utilizadas
 Para a realização do projeto foram utilizadas as seguintes tecnologias:
 - Java
