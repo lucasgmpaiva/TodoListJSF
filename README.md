@@ -20,6 +20,7 @@ Para a execução deste projeto é necessário, primeiro possuir os seguintes re
 - Eclipse IDE (com Maven)
 - MySQL
 - Apache TomCat 8.5
+
 É necessário também que o banco de dados seja configurado na pasta: "JavaResources/src/main/resources/hibernate.cfg.xml". Neste caso é preciso criar o banco de dados no MySQL Server, mas apenas o banco, pois a aplicação está configurada para realizar a criação automática da tabela a cada inicialização do projeto.
 1. Baixe o projeto como .zip
 2. Descompacte o arquivo
