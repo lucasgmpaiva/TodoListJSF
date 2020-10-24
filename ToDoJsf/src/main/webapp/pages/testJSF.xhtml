@@ -16,8 +16,9 @@
 				paginator="true" rows="10" value="#{myBean.tasks}" var="task"
 				id="dataTable">
 				<f:facet name="header">
-					<p:commandButton value="Novo"
-						oncomplete="PF('dialogNewTask').show();" />
+					<p:commandButton value="Nova Tarefa"
+						oncomplete="PF('dialogNewTask').show();"
+						update=":formTask:panelGrid" />
 				</f:facet>
 				<p:column headerText="Nome">
 					<h:outputText value="#{task.name}" />
