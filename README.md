@@ -19,7 +19,7 @@ Para a realização do projeto foram utilizadas as seguintes tecnologias:
 - JUnit
 - Apache TomCat
 
-### Instruções de execução
+### Instruções Para A Execução
 Para a execução deste projeto é necessário, primeiro possuir os seguintes recursos em sua máquina:
 - Java 1.8 (JDK)
 - Eclipse IDE (com Maven)
