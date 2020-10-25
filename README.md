@@ -2,7 +2,7 @@
 
 ## TodoList Implementado com JSF
 
-Este projeto trata-se da implementação de uma TodoList (Lista de Afazeres) por meio de Java Web para a realização do desafio de recrutamento de estagiários da empresa ESIG -  Software e Consultoria em TI.
+Este projeto trata-se da implementação de uma TodoList (Lista de Tarefas) por meio de Java Web para a realização do desafio de recrutamento de estagiários da empresa ESIG -  Software e Consultoria em TI.
 
 #### Autor: Lucas Gabriel Matias Paiva
 
@@ -38,3 +38,6 @@ As mudanças no arquivo de configuração devem ser as seguintes:
 5. Inicialize o servidor
 6. Em um navegador, acesse o endereço: "localhost:8080/ToDoJSF/pages/testJSF.xhtml". Se necessário, substitua a porta "8080" pela porta com a qual o seu TomCat foi configurado.
 7. O projeto já estará em execução.
+
+### Versão Spring Boot:
+Este projeto possui uma versão utilizando Spring Boot disponível no repositório a seguir: https://github.com/lucasgmpaiva/TodoListSpring
